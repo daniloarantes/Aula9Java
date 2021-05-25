@@ -5,6 +5,11 @@
  */
 package Janelas;
 
+import Objetos.Cliente;
+import javax.swing.JOptionPane;
+
+
+
 /**
  *
  * @author Danilo Arantes <danilo at daniloarantes.com>
@@ -40,7 +45,7 @@ public class CadCliente extends javax.swing.JFrame {
         jBCadastrar = new javax.swing.JButton();
         jBLimpar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -50,23 +55,25 @@ public class CadCliente extends javax.swing.JFrame {
 
         jLabel2.setText("Nome");
 
-        jTNome.setText("jTNome");
-
         jLabel3.setText("Endereço");
-
-        jTEndereco.setText("jTEndereco");
 
         jLabel4.setText("CPF");
 
-        jTCpf.setText("jTCpf");
-
         jLabel5.setText("Telefone");
 
-        jTTelefone.setText("jTTelefone");
+        jBCadastrar.setText("Cadastrar");
+        jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarActionPerformed(evt);
+            }
+        });
 
-        jBCadastrar.setText("jBCadastrar");
-
-        jBLimpar.setText("jBLimpar");
+        jBLimpar.setText("Limpar");
+        jBLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -148,6 +155,24 @@ public class CadCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+        Cliente cli = new Cliente();
+        
+        cli.setNome(jTNome.getText());
+        cli.setEndereco(jTEndereco.getText());
+        cli.setCpf(jTCpf.getText());
+        cli.setTelefone(jTTelefone.getText());
+        
+        JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso!");
+    }//GEN-LAST:event_jBCadastrarActionPerformed
+
+    private void jBLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimparActionPerformed
+        jTNome.setText("");
+        jTEndereco.setText("");
+        jTCpf.setText("");
+        jTTelefone.setText("");
+    }//GEN-LAST:event_jBLimparActionPerformed
 
     /**
      * @param args the command line arguments

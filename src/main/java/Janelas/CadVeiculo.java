@@ -5,17 +5,27 @@
  */
 package Janelas;
 
+import Objetos.Veiculo;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Danilo Arantes <danilo at daniloarantes.com>
  */
 public class CadVeiculo extends javax.swing.JFrame {
-
+     Veiculo vei = new Veiculo();
     /**
      * Creates new form CadVeiculo
      */
     public CadVeiculo() {
+        initComponents();        
+    }
+    
+    
+    // Sobrecarga de Métodos
+    public CadVeiculo(Veiculo vei){
         initComponents();
+        this.vei = vei;
     }
 
     /**
@@ -38,7 +48,7 @@ public class CadVeiculo extends javax.swing.JFrame {
         jBCadastrar = new javax.swing.JButton();
         jBLimpar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -53,8 +63,18 @@ public class CadVeiculo extends javax.swing.JFrame {
         jLabel4.setText("Preço");
 
         jBCadastrar.setText("Cadastrar");
+        jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarActionPerformed(evt);
+            }
+        });
 
         jBLimpar.setText("Limpar");
+        jBLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -127,6 +147,25 @@ public class CadVeiculo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+       
+        vei.setFabricante(jTFab.getText());
+        vei.setModelo(jTModelo.getText());
+        vei.setPreco(Double.parseDouble(jTPreco.getText()));
+        
+        String dados = "\n" + jTFab.getText() + " \n"
+                + jTModelo.getText() + "\n"
+                + jTPreco.getText();
+        
+        JOptionPane.showMessageDialog(this, "Veículo cadastrado com sucesso!\n" + dados);
+    }//GEN-LAST:event_jBCadastrarActionPerformed
+
+    private void jBLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimparActionPerformed
+        jTFab.setText("");
+        jTModelo.setText("");
+        jTPreco.setText("");
+    }//GEN-LAST:event_jBLimparActionPerformed
 
     /**
      * @param args the command line arguments

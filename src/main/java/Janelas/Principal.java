@@ -5,11 +5,17 @@
  */
 package Janelas;
 
+import Objetos.Cliente;
+import Objetos.Veiculo;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Danilo Arantes <danilo at daniloarantes.com>
  */
 public class Principal extends javax.swing.JFrame {
+     Veiculo vei;
+     Cliente cli;
 
     /**
      * Creates new form Principal
@@ -32,6 +38,7 @@ public class Principal extends javax.swing.JFrame {
         jBCadVeiculo = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jBCadCliente = new javax.swing.JButton();
+        jBMVeiculo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +75,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro de Clientes"));
 
         jBCadCliente.setText("Cadastrar Cliente");
+        jBCadCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -86,6 +98,13 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
+        jBMVeiculo.setText("Mostrar Veículo");
+        jBMVeiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBMVeiculoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,6 +116,10 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jBMVeiculo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,16 +130,29 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jBMVeiculo)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBCadVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadVeiculoActionPerformed
-        CadVeiculo cv = new CadVeiculo();
+        vei = new Veiculo();
+        CadVeiculo cv = new CadVeiculo(vei);
         cv.setVisible(true);
     }//GEN-LAST:event_jBCadVeiculoActionPerformed
+
+    private void jBCadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadClienteActionPerformed
+        CadCliente cc = new CadCliente();
+        cc.setVisible(true);
+    }//GEN-LAST:event_jBCadClienteActionPerformed
+
+    private void jBMVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMVeiculoActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, vei.getFabricante());
+    }//GEN-LAST:event_jBMVeiculoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,6 +192,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCadCliente;
     private javax.swing.JButton jBCadVeiculo;
+    private javax.swing.JButton jBMVeiculo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
