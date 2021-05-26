@@ -150,8 +150,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCadClienteActionPerformed
 
     private void jBMVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMVeiculoActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, vei.getFabricante());
+        String dados = vei.getFabricante() + "\n" + vei.getModelo() + "\n" + vei.getPreco();
+        JOptionPane.showMessageDialog(this, dados);
     }//GEN-LAST:event_jBMVeiculoActionPerformed
 
     /**
