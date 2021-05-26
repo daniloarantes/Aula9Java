@@ -14,8 +14,9 @@ import javax.swing.JOptionPane;
  * @author Danilo Arantes <danilo at daniloarantes.com>
  */
 public class Principal extends javax.swing.JFrame {
-     Veiculo vei;
-     Cliente cli;
+
+    Veiculo vei = new Veiculo();
+    Cliente cli = new Cliente();
 
     /**
      * Creates new form Principal
@@ -39,6 +40,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jBCadCliente = new javax.swing.JButton();
         jBMVeiculo = new javax.swing.JButton();
+        jBMCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,6 +107,13 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jBMCliente.setText("Mostrar Cliente");
+        jBMCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBMClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,7 +128,9 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(jBMVeiculo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBMCliente)
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +142,9 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jBMVeiculo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBMVeiculo)
+                    .addComponent(jBMCliente))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -139,13 +152,12 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBCadVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadVeiculoActionPerformed
-        vei = new Veiculo();
         CadVeiculo cv = new CadVeiculo(vei);
         cv.setVisible(true);
     }//GEN-LAST:event_jBCadVeiculoActionPerformed
 
     private void jBCadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadClienteActionPerformed
-        CadCliente cc = new CadCliente();
+        CadCliente cc = new CadCliente(cli);
         cc.setVisible(true);
     }//GEN-LAST:event_jBCadClienteActionPerformed
 
@@ -153,6 +165,15 @@ public class Principal extends javax.swing.JFrame {
         String dados = vei.getFabricante() + "\n" + vei.getModelo() + "\n" + vei.getPreco();
         JOptionPane.showMessageDialog(this, dados);
     }//GEN-LAST:event_jBMVeiculoActionPerformed
+
+    private void jBMClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMClienteActionPerformed
+        String dados = cli.getNome() + "\n"
+                + cli.getEndereco() + "\n"
+                + cli.getCpf() + "\n"
+                + cli.getTelefone();
+
+        JOptionPane.showMessageDialog(this, dados);
+    }//GEN-LAST:event_jBMClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,6 +213,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCadCliente;
     private javax.swing.JButton jBCadVeiculo;
+    private javax.swing.JButton jBMCliente;
     private javax.swing.JButton jBMVeiculo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
